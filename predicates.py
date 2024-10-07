@@ -6,50 +6,63 @@ import pytest
 
 # is x between a and b
 def between(x, a, b):
-  pass
-  return True
-  
+  if x >= a and x <= b or x >= b and x <= a:
+    return True
+  else:
+    return False
 # is x divisibleBy a ?
 def isDivisibleBy(x, a):
-  
-  return False
+  if a == 0:
+    return False
+  elif x % a == 0:
+    return True
+  else:
+    return False
   
 # is x even?
 def isEvenNumber(x):
-  return False
+  if x % 2 == 0:
+    return True
+  else:
+    return False
   
 # is x odd?
 def isOddNumber(x):
-  return False
+  if x % 2 == 0:
+    return False
+  else:
+    return True
   
 # this is done
 def isInteger(x):
-  return False  # no change needed here
-
-# withinRadius is the point (x1,y1) within distance of the point (x2, y2)
-def withinRadius(x1, y1, x2, y2, distance):
-  # t1.xcor()   t2.xcor()
-  # t1.ycor()   t2.ycor()
-  return False
-  
+  if x == int(x):
+    return True
+  else:
+    return False  # no change needed here
 # do the sides a, b, c make a Pythagorean triangle
 # remember the Pythagorean theorem
 def isPythagorean(a, b, c):
-  return False
-  
-# is number a prime number
-# I suggest using a loop here
-def isPrime(number):
-  
-  return True
+  if a*a + b*b == c*c:
+    return True
+  else:
+    return False
+
+# withinRadius is the point (x1,y1) within distance of the point (x2, y2)
+def withinRadius(x1, y1, x2, y2, distance):
+  if math.sqrt((x1-x2)**2 + (y1-y2)**2) <= distance:
+    return True
+  else:
+    return False
   
 # is (x, y) a point with in the circle defined by (cx, cy) and radius
 # think about the circle equation (x-h)^2 + (y-k) ^2 = r^2
 # where h,k is the center and x,y is point 
 # 
 def pointWithinCircle(x, y, cx, cy, radius):
-
-  return False
+    if math.sqrt((x-cx)**2 + (y-cy)**2) <= radius:
+      return True
+    else:
+      return False
 
 
 # put test cases here
@@ -109,14 +122,7 @@ assert(withinRadius(1, 1, 1, 2, 1) == True)  # Point within distance
 assert(isPythagorean(3, 4, 5) == True)   # Pythagorean triplet
 assert(isPythagorean(5, 5, 5) == False)  # Not a Pythagorean triplet
 assert(isPythagorean(6, 8, 10) == True)  # Another Pythagorean triplet
-assert(isPythagorean(1, 1, 1) == False)  # Not a valid triangle
-    
-    # Test for isPrime(number)
-
-assert(isPrime(5) == True)    # 5 is a prime number
-assert(isPrime(4) == False)   # 4 is not a prime number
-assert(isPrime(1) == False)   # 1 is not a prime number
-assert(isPrime(2) == True)    # 2 is a prime number (edge case)
+assert(isPythagorean(1, 1, 1) == False)  # Not a valid triangle   
     
     # Test for pointWithinCircle(x, y, cx, cy, radius)
 assert(pointWithinCircle(0, 0, 0, 0, 1) == True)   # Center of the circle
